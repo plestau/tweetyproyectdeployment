@@ -3,7 +3,7 @@ import { ref, watch, onMounted, onUnmounted } from 'vue'
 import axios from 'axios'
 import { usePage } from '@inertiajs/inertia-vue3'
 import { defineProps } from '@vue/runtime-core'
-import TweetyPieHomeLayout from '@/layouts/TweetyPieHomeLayout.vue'
+import TweetyPieHomeLayout from '@/Layouts/TweetyPieHomeLayout.vue'
 import Post from '@/components/Post.vue'
 
 let { posts: postsProp, recentUsers } = defineProps({

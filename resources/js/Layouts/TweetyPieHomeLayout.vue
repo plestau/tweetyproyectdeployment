@@ -2,7 +2,7 @@
 import { ref, defineProps } from 'vue';
 import { router } from '@inertiajs/vue3';
 import { Link, Head, usePage } from '@inertiajs/inertia-vue3';
-import Layout from '@/layouts/Layout.vue';
+import Layout from '@/Layouts/Layout.vue';
 import { defineAsyncComponent } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import TweetyPielogo from 'vue-material-design-icons/Twitter.vue';
@@ -16,7 +16,7 @@ import ImageOutline from 'vue-material-design-icons/ImageOutline.vue';
 import FileGifBox from 'vue-material-design-icons/FileGifBox.vue';
 import Emoticon from 'vue-material-design-icons/Emoticon.vue';
 import ArrowLeft from 'vue-material-design-icons/ArrowLeft.vue';
-import MenuItem from '@/components/MenuItem.vue';
+import MenuItem from '@/Components/MenuItem.vue';
 
 const pageProps = usePage().props;
 const recentUsers = ref(pageProps.value.recentUsers);
