@@ -1,7 +1,7 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, defineProps } from 'vue';
 import { router } from '@inertiajs/vue3';
-import { Link, Head } from '@inertiajs/inertia-vue3';
+import { Link, Head, usePage } from '@inertiajs/inertia-vue3';
 import Layout from '@/Layouts/Layout.vue';
 import { defineAsyncComponent } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
@@ -17,6 +17,9 @@ import FileGifBox from 'vue-material-design-icons/FileGifBox.vue';
 import Emoticon from 'vue-material-design-icons/Emoticon.vue';
 import ArrowLeft from 'vue-material-design-icons/ArrowLeft.vue';
 import MenuItem from '@/Components/MenuItem.vue';
+
+const pageProps = usePage().props;
+const recentUsers = ref(pageProps.value.recentUsers);
 
 let createPost = ref(false);
 let post = ref('');
@@ -113,10 +116,12 @@ const addPost = () => {
                         <!-- El usuario no está autenticado -->
                         <div class="flex p-7 justify-evenly">
                             <!-- botones de inicio de sesion y registro-->
-                            <button @click="login" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <button @click="login"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 Iniciar sesión
                             </button>
-                            <button @click="register" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            <button @click="register"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 Registrarse
                             </button>
                         </div>
@@ -156,69 +161,28 @@ const addPost = () => {
                         class="appeareance-none w-full border-0 py-2 bg-[#212327] text-gray-100 palceholder-gray-500 leading-tight focus:ring-0">
                 </div>
                 <div class="w-full mt-4 rounded-lg lg:block hidden bg-[#212327]">
-                    <div class="w-full p-4 text-white font-extrabold mb-6 text-[20px]">
-                        What's happening
+                    <div class="w-full p-4 text-white font-extrabold text-[20px]">
+                        Cuentas creadas recientemente
                     </div>
-                    <div class="h-[80px] hover:bg-gray-800 cursor-pointer transition duration-200 ease-in-out">
-                        <div class="flex p-3 justify-between h-[80px] py-3">
-                            <div>
-                                <div class="text-[14px] text-gray-400">
-                                    Basketball tournament LIVE
-                                </div>
-                                <div class="w-full text-white font-extrabold mb-6 text-[17px]">
-                                    GP de Tourin 2023
+                    <div v-for="user in recentUsers" :key="user.id"
+                        class="h-[80px] hover:bg-gray-800 cursor-pointer transition duration-200 ease-in-out flex items-center space-x-4 p-3">
+                        <div
+                            class="h-[80px] hover:bg-gray-800 cursor-pointer transition duration-200 ease-in-out flex items-center space-x-4 p-3">
+                            <Link :href="`/profile/${user.id}`">
+                            <div class="flex items-center space-x-4">
+                                <img :src="'/storage/' + user.profile_photo_path" alt="Foto de perfil"
+                                    class="h-10 w-10 rounded-full object-cover">
+                                <div>
+                                    <div class="font-bold text-white">{{ user.name }}</div>
+                                    <div class="text-sm text-gray-400">{{ user.username }}</div>
                                 </div>
                             </div>
-                            <img class="rounded-xl" :src="randImg2" alt="" />
+                            </Link>
+                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">
+                                Seguir
+                            </button>
                         </div>
-                    </div>
-                    <div class="hover:bg-gray-800 cursor-pointer transition duration-200 ease-in-out">
-                        <div class="flex p-3 justify-between">
-                            <div>
-                                <div class="text-[14px] text-gray-400">
-                                    Trending at your country
-                                </div>
-                                <div class="w-full text-white font-extrabold text-[17px]">
-                                    #ELNANO
-                                </div>
-                                <div class="text-[14px] text-gray-400">
-                                    33,3k posts
-                                </div>
-                            </div>
-                            <DotsHorizontal fillcolor="#5e5c5c" />
-                        </div>
-                    </div>
-                    <div class="hover:bg-gray-800 cursor-pointer transition duration-200 ease-in-out">
-                        <div class="flex p-3 justify-between">
-                            <div>
-                                <div class="text-[14px] text-gray-400">
-                                    Trending - Sports
-                                </div>
-                                <div class="w-full text-white font-extrabold text-[17px]">
-                                    #Alonso
-                                </div>
-                                <div class="text-[14px] text-gray-400">
-                                    33,3k posts
-                                </div>
-                            </div>
-                            <DotsHorizontal fillcolor="#5e5c5c" />
-                        </div>
-                    </div>
-                    <div class="hover:bg-gray-800 cursor-pointer transition duration-200 ease-in-out">
-                        <div class="flex p-3 justify-between">
-                            <div>
-                                <div class="text-[14px] text-gray-400">
-                                    Trending - Politics
-                                </div>
-                                <div class="w-full text-white font-extrabold text-[17px]">
-                                    #inflacion
-                                </div>
-                                <div class="text-[14px] text-gray-400">
-                                    266,3k posts
-                                </div>
-                            </div>
-                            <DotsHorizontal fillcolor="#5e5c5c" />
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -246,7 +210,8 @@ const addPost = () => {
                 </button>
                 <div class="w-full flex">
                     <div class="ml-3.5 mr-2">
-                        <img class="rounded-full" width="55" :src="'/storage/' + $page.props.auth.user.profile_photo_path" />
+                        <img class="rounded-full" width="55"
+                            :src="'/storage/' + $page.props.auth.user.profile_photo_path" />
                     </div>
                     <div class="w-[calc(100%-100px)]">
                         <div>
@@ -281,7 +246,6 @@ const addPost = () => {
                         </div>
                     </div>
                 </div>
-
                 <div class="w-full">
                     <video controls v-if="uploadType === 'mp4'" :src="showUpload" class="rounded-xl overflow-auto" />
                     <img v-else :src="showUpload" class="rounded-xl min-w-full">

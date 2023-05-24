@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed w-full text-white">
+    <div class="w-full text-white">
         <div id="nav" class="max-w-[1400px] flex mx-auto">
             <!-- Barra de navegación lateral -->
             <div :class="{'lg:w-3/12 w-[60px] h-[100vh] max-w-[350px] lg:px-4 lg:mx-auto': true, 'hidden lg:block': !menuOpen, 'block': menuOpen}" @click="menuOpen = false">

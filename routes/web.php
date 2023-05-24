@@ -27,7 +27,6 @@ Route::inertia('notifications', 'Notifications')->name('pages.notifications');
 
 Route::inertia('messages', 'Messages')->name('pages.messages');
 
-
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('auth.register');
