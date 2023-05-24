@@ -3,9 +3,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build && vite build --ssr",
-        "production": "vite build && vite build --ssr",
-        "heroku-postbuild": "npm run production",
-        "postinstall": "npm run production"
+        "postinstall": "npm run build"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
