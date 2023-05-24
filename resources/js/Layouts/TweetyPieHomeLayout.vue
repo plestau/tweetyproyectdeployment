@@ -2,7 +2,7 @@
 import { ref, defineProps } from 'vue';
 import { router } from '@inertiajs/vue3';
 import { Link, Head, usePage } from '@inertiajs/inertia-vue3';
-import Layout from '@/Layouts/Layout.vue';
+import Layout from '@/Layouts/TweetyPieHomeLayout.vue';
 import { defineAsyncComponent } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import TweetyPielogo from 'vue-material-design-icons/Twitter.vue';
@@ -255,7 +255,7 @@ const addPost = () => {
     </div>
 </template>
 
-<style scoped>
+<style>
 body {
     background-color: lightgreen;
 }

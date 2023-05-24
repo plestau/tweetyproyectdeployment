@@ -2,7 +2,7 @@
 import { ref, watch, onMounted, onUnmounted } from 'vue'
 import axios from 'axios'
 import { usePage } from '@inertiajs/inertia-vue3'
-import { defineProps } from '@vue/runtime-core'
+import { defineProps } from 'vue'
 import TweetyPieHomeLayout from '@/Layouts/TweetyPieHomeLayout.vue'
 import Post from '@/Components/Post.vue'
 
