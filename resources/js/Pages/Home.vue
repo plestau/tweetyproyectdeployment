@@ -4,7 +4,7 @@ import axios from 'axios'
 import { usePage } from '@inertiajs/inertia-vue3'
 import { defineProps } from '@vue/runtime-core'
 import TweetyPieHomeLayout from '@/Layouts/TweetyPieHomeLayout.vue'
-import Post from '@/components/Post.vue'
+import Post from '@/Components/Post.vue'
 
 let { posts: postsProp, recentUsers } = defineProps({
     posts: Object,
