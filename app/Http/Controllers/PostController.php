@@ -31,17 +31,11 @@ public function index(Request $request)
         $post->hasDisliked = $post->likes()->where('user_id', $user->id)->where('type', false)->exists();
     }
 
-    if ($request->expectsJson()) {
-        return response()->json([
-            'posts' => $posts,
-            'recentUsers' => $recentUsers,
-        ]);
-    } else {
-        return Inertia::render('Home', [
-            'posts' => $posts,
-            'recentUsers' => $recentUsers,
-        ]);
-    }
+    return Inertia::render('Home', [
+        'posts' => $posts,
+        'recentUsers' => $recentUsers,
+    ]);
+    
 }
 
     
