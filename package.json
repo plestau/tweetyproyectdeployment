@@ -3,7 +3,8 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build && vite build --ssr",
-        "postinstall": "npm run build"
+        "postinstall": "npm run prod",
+        "prod": "npm run build && npm run build --ssr"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
