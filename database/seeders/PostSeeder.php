@@ -24,7 +24,9 @@ class PostSeeder extends Seeder
             'file' => '/videos/Sportsman.mp4',
             'is_video' => true,
             'comments' => '35',
+            'reposts' => '54',
             'likes' => '88',
+            'analytics' => '81',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -37,7 +39,9 @@ class PostSeeder extends Seeder
             'file' => '/pics/Code.png',
             'is_video' => false,
             'comments' => '83',
+            'reposts' => '59',
             'likes' => '62',
+            'analytics' => '66',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -50,7 +54,9 @@ class PostSeeder extends Seeder
             'file' => '/videos/Seo.mp4',
             'is_video' => true,
             'comments' => '56',
+            'reposts' => '54',
             'likes' => '78',
+            'analytics' => '21',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
@@ -63,7 +69,9 @@ class PostSeeder extends Seeder
             'file' => '/pics/PlayGuitar.png',
             'is_video' => false,
             'comments' => '94',
+            'reposts' => '29',
             'likes' => '33',
+            'analytics' => '89',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);

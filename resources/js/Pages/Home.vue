@@ -1,32 +1,20 @@
 <script setup>
-import { ref, watch, onMounted, onUnmounted } from 'vue'
-import axios from 'axios'
-import { usePage } from '@inertiajs/inertia-vue3'
-import { defineProps } from 'vue'
-import TweetyPieHomeLayout from '@/Layouts/TweetyPieHomeLayout.vue'
-import Post from '@/Components/Post.vue'
 
-let { posts: postsProp, recentUsers } = defineProps({
-    posts: Object,
-    recentUsers: Array
-})
+import { Head, Link } from '@inertiajs/vue3';
+import Post from '@/Components/Post.vue';
+import TweetyPieHomeLayout from '@/Layouts/TweetyPieHomeLayout.vue';
 
-let posts = ref(postsProp)
-let page = ref(posts.value.current_page)
-let isLastPage = ref(false)
-
-
+defineProps({posts: Array});
 </script>
 
 <template>
+    <Head title="Home" />
     <TweetyPieHomeLayout>
-        <div class="text-white" ref="postsContainer">
-            <div class="flex" v-for="post in posts.data" :key="post.id">
-                <Post :post="post" />
+        <div class="text-white">
+            <div class="flex" v-for="post in posts" :key="post">
+                <Post :post="post" :key="post.id" />
             </div>
-            <div v-if="!isLastPage">
-                Cargando más posts...
-            </div>
+            <div class="border-b border-b-gray-800 mt-2"></div>
         </div>
     </TweetyPieHomeLayout>
 </template>

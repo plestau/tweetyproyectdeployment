@@ -42,11 +42,17 @@ watch(username, async (newUsername) => {
 });
 
 const submit = () => {
-    form.post(route('register'), {
-        transformRequest: [() => new FormData(form.get())],
+    let data = new FormData();
+    
+    Object.keys(form).forEach((key) => {
+        data.append(key, form[key]);
+    });
+
+    form.post(route('register'), data, {
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
 };
+
 </script>
 
 

@@ -255,7 +255,7 @@ const addPost = () => {
     </div>
 </template>
 
-<style scoped>
+<style>
 body {
     background-color: lightgreen;
 }
