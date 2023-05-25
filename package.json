@@ -3,7 +3,8 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build && vite build --ssr",
-        "heroku-postbuild": "npm run build"
+        "heroku-postbuild":
+        "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
     },
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
