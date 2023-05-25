@@ -5,6 +5,7 @@
             <div :class="{'lg:w-3/12 w-[60px] h-[100vh] max-w-[350px] lg:px-4 lg:mx-auto': true, 'hidden lg:block': !menuOpen, 'block': menuOpen}" @click="menuOpen = false">
                 <div class="p-2 px-3 mb-4">
                     <h2>Logo</h2>
+                    <p></p>
                 </div>
                 <Link :href="route('post.home')"><MenuItem iconString="Home" ></MenuItem></Link>
                 <!--
