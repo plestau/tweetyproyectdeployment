@@ -32,6 +32,6 @@
         "vue-router": "^4.1.6"
     },
     "engines": {
-        "node": "14.x"
+        "node": ">=14.0.0"
     }
 }
